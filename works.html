@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>施工事例 | 有限会社石井電工</title>
+  <meta name="description" content="石井電工の施工事例一覧。エアコン工事・コンセント増設・防犯カメラ設置など、実際の工事写真と共にご紹介します。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0d1f35; --blue: #1e40af; --cyan: #0891b2; --teal: #0d9488;
+      --amber: #d97706; --gold: #f59e0b; --orange: #ea580c;
+      --text: #1e293b; --muted: #64748b; --bg: #f8fafc; --white: #ffffff;
+      --border: #e2e8f0; --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.10);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); line-height: 1.7; font-size: 16px; background: var(--white); }
+
+    /* HEADER */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,31,53,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .header-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      height: 66px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-icon svg { width: 22px; height: 22px; fill: var(--white); }
+    .logo-name {
+      font-size: 20px; font-weight: 900; line-height: 1.15;
+      background: linear-gradient(90deg, #fff 60%, var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .logo-sub { font-size: 11px; color: rgba(255,255,255,0.5); }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13.5px; padding: 6px 12px; border-radius: 6px; transition: all 0.2s; }
+    nav a:hover, nav a.active { color: var(--white); background: rgba(255,255,255,0.08); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), var(--orange)) !important;
+      color: var(--white) !important; font-weight: 700 !important;
+      padding: 8px 18px !important; border-radius: 8px !important;
+    }
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .menu-btn span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 100%);
+      padding: 80px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
+      background: linear-gradient(to bottom right, transparent 49%, var(--bg) 50%);
+    }
+    .page-hero-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .page-hero h1 { font-size: clamp(28px,5vw,44px); font-weight: 900; color: var(--white); margin-bottom: 12px; }
+    .page-hero p { color: rgba(255,255,255,0.65); font-size: 16px; }
+
+    /* FILTER */
+    .filter-bar { background: var(--bg); padding: 32px 24px 0; }
+    .filter-inner { max-width: 1120px; margin: 0 auto; }
+    .filter-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter-tab {
+      padding: 8px 20px; border-radius: 50px; border: 1.5px solid var(--border);
+      background: var(--white); font-size: 13px; font-weight: 500;
+      cursor: pointer; transition: all 0.2s; color: var(--muted);
+    }
+    .filter-tab.active, .filter-tab:hover {
+      background: var(--navy); color: var(--white); border-color: var(--navy);
+    }
+
+    /* WORKS GRID */
+    .works-section { background: var(--bg); padding: 40px 24px 80px; }
+    .works-inner { max-width: 1120px; margin: 0 auto; }
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+    }
+    .work-card {
+      background: var(--white); border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
+      transition: all 0.3s; border: 1px solid var(--border);
+    }
+    .work-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .work-img {
+      width: 100%; height: 220px; object-fit: cover;
+      background: linear-gradient(135deg, #1e3a5f, #0891b2);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .work-img-placeholder {
+      font-size: 60px; opacity: 0.4;
+    }
+    .work-tag {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--navy); color: var(--white);
+      font-size: 11px; font-weight: 700; padding: 4px 10px;
+      border-radius: 50px; letter-spacing: 0.05em;
+    }
+    .work-body { padding: 20px; }
+    .work-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .work-meta {
+      display: flex; gap: 16px; font-size: 12px; color: var(--muted); margin-bottom: 10px;
+    }
+    .work-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+    .work-price {
+      display: flex; align-items: center; gap: 8px;
+      background: #fef3c7; border-radius: 8px; padding: 10px 14px;
+    }
+    .work-price-label { font-size: 11px; color: var(--amber); font-weight: 700; }
+    .work-price-value { font-size: 18px; font-weight: 900; color: var(--orange); }
+    .work-price-note { font-size: 11px; color: var(--muted); }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy), #1e3a5f);
+      padding: 80px 24px; text-align: center;
+    }
+    .cta-section h2 { font-size: 28px; font-weight: 900; color: var(--white); margin-bottom: 12px; }
+    .cta-section p { color: rgba(255,255,255,0.65); margin-bottom: 32px; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: var(--white); font-weight: 700; font-size: 16px;
+      padding: 14px 32px; border-radius: 10px; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1); color: var(--white);
+      font-weight: 600; font-size: 16px;
+      padding: 14px 32px; border-radius: 10px; text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.2); transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+
+    /* FOOTER */
+    footer { background: #07111f; padding: 40px 24px; text-align: center; }
+    .footer-logo { color: var(--white); font-weight: 900; font-size: 18px; margin-bottom: 8px; }
+    .footer-info { color: rgba(255,255,255,0.4); font-size: 13px; line-height: 2; }
+
+    /* MOBILE */
+    @media(max-width: 768px) {
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; position: absolute; top: 66px; left: 0; right: 0; background: var(--navy); padding: 16px; gap: 4px; }
+      .menu-btn { display: block; }
+      .works-grid { grid-template-columns: 1fr; }
+      .cta-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+      </div>
+      <div>
+        <div class="logo-name">石井電工</div>
+        <div class="logo-sub">成田・富里の電気工事専門店</div>
+      </div>
+    </a>
+    <nav id="nav">
+      <a href="index.html">ホーム</a>
+      <a href="works.html" class="active">施工事例</a>
+      <a href="blog.html">ブログ</a>
+      <a href="contact.html" class="nav-cta">無料見積もり</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-label">📷 Works</div>
+  <h1>施工事例</h1>
+  <p>実際に対応した工事をご紹介します。<br>同じようなお困りごとがあればお気軽にご相談ください。</p>
+</div>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="filter-tabs">
+      <button class="filter-tab active">すべて</button>
+      <button class="filter-tab">エアコン工事</button>
+      <button class="filter-tab">コンセント</button>
+      <button class="filter-tab">防犯カメラ</button>
+      <button class="filter-tab">照明・LED</button>
+      <button class="filter-tab">分電盤</button>
+      <button class="filter-tab">店舗・事務所</button>
+    </div>
+  </div>
+</div>
+
+<!-- WORKS GRID -->
+<section class="works-section">
+  <div class="works-inner">
+    <div class="works-grid">
+
+      <!-- 事例1 -->
+      <div class="work-card">
+        <div class="work-img">
+          <div class="work-img-placeholder">❄️</div>
+          <span class="work-tag">エアコン工事</span>
+        </div>
+        <div class="work-body">
+          <div class="work-meta">
+            <span>📍 成田市</span>
+            <span>🏠 戸建て住宅</span>
+            <span>🗓 2024年8月</span>
+          </div>
+          <div class="work-title">エアコン新規取り付け（100V・6畳用）</div>
+          <div class="work-desc">2階の子ども部屋にエアコンを新規設置。配管穴の穿孔から室外機設置まで半日で完了しました。</div>
+          <div class="work-price">
+            <span class="work-price-label">施工費</span>
+            <span class="work-price-value">¥18,000</span>
+            <span class="work-price-note">〜（税込）</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 事例2 -->
+      <div class="work-card">
+        <div class="work-img" style="background: linear-gradient(135deg,#1e3a5f,#059669);">
+          <div class="work-img-placeholder">🔌</div>
+          <span class="work-tag">コンセント</span>
+        </div>
+        <div class="work-body">
+          <div class="work-meta">
+            <span>📍 富里市</span>
+            <span>🏠 戸建て住宅</span>
+            <span>🗓 2024年7月</span>
+          </div>
+          <div class="work-title">キッチンにコンセント増設（専用回路）</div>
+          <div class="work-desc">電子レンジとIH調理器を同時使用したいとのご要望で、専用の100V回路を増設。ブレーカーも対応しました。</div>
+          <div class="work-price">
+            <span class="work-price-label">施工費</span>
+            <span class="work-price-value">¥25,000</span>
+            <span class="work-price-note">〜（税込）</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 事例3 -->
+      <div class="work-card">
+        <div class="work-img" style="background: linear-gradient(135deg,#1e3a5f,#7c3aed);">
+          <div class="work-img-placeholder">📹</div>
+          <span class="work-tag">防犯カメラ</span>
+        </div>
+        <div class="work-body">
+          <div class="work-meta">
+            <span>📍 成田市</span>
+            <span>🏪 店舗</span>
+            <span>🗓 2024年6月</span>
+          </div>
+          <div class="work-title">店舗に防犯カメラ4台設置</div>
+          <div class="work-desc">飲食店の入口・レジ周り・駐車場をカバーする形で4台設置。録画機器の設定・操作説明まで丁寧に対応しました。</div>
+          <div class="work-price">
+            <span class="work-price-label">施工費</span>
+            <span class="work-price-value">¥65,000</span>
+            <span class="work-price-note">〜（税込）</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 事例4 -->
+      <div class="work-card">
+        <div class="work-img" style="background: linear-gradient(135deg,#78350f,#d97706);">
+          <div class="work-img-placeholder">💡</div>
+          <span class="work-tag">照明・LED</span>
+        </div>
+        <div class="work-body">
+          <div class="work-meta">
+            <span>📍 富里市</span>
+            <span>🏠 戸建て住宅</span>
+            <span>🗓 2024年5月</span>
+          </div>
+          <div class="work-title">リビング・ダイニングのLED照明交換</div>
+          <div class="work-desc">蛍光灯からLEDシーリングライトに全室交換。電気代が約40%削減でき、お客様にとても喜んでいただきました。</div>
+          <div class="work-price">
+            <span class="work-price-label">施工費</span>
+            <span class="work-price-value">¥8,000</span>
+            <span class="work-price-note">〜/台（税込）</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 事例5 -->
+      <div class="work-card">
+        <div class="work-img" style="background: linear-gradient(135deg,#0c4a6e,#0891b2);">
+          <div class="work-img-placeholder">⚡</div>
+          <span class="work-tag">分電盤</span>
+        </div>
+        <div class="work-body">
+          <div class="work-meta">
+            <span>📍 成田市</span>
+            <span>🏠 戸建て住宅</span>
+            <span>🗓 2024年4月</span>
+          </div>
+          <div class="work-title">分電盤の交換・容量アップ（30A→60A）</div>
+          <div class="work-desc">古い分電盤が原因で頻繁にブレーカーが落ちるとのこと。最新の漏電遮断器付き分電盤に交換し、容量も倍増しました。</div>
+          <div class="work-price">
+            <span class="work-price-label">施工費</span>
+            <span class="work-price-value">¥55,000</span>
+            <span class="work-price-note">〜（税込）</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 事例6 -->
+      <div class="work-card">
+        <div class="work-img" style="background: linear-gradient(135deg,#1e1e3f,#db2777);">
+          <div class="work-img-placeholder">🏪</div>
+          <span class="work-tag">店舗・事務所</span>
+        </div>
+        <div class="work-body">
+          <div class="work-meta">
+            <span>📍 成田市</span>
+            <span>🏢 事務所</span>
+            <span>🗓 2024年3月</span>
+          </div>
+          <div class="work-title">事務所の電気設備一式リニューアル</div>
+          <div class="work-desc">移転に伴い、照明・コンセント・LAN配線・エアコンをトータルで対応。内装工事業者と連携してスムーズに完工しました。</div>
+          <div class="work-price">
+            <span class="work-price-label">施工費</span>
+            <span class="work-price-value">応相談</span>
+            <span class="work-price-note"></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>同じようなお困りごとはありませんか？</h2>
+  <p>まずはお気軽にご相談ください。現地確認・見積もりは無料です。</p>
+  <div class="cta-btns">
+    <a href="contact.html" class="btn-primary">📞 無料見積もりを依頼する</a>
+    <a href="index.html" class="btn-secondary">トップページに戻る</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">⚡ 有限会社石井電工</div>
+  <div class="footer-info">
+    〒286-0201 千葉県富里市七栄651-1<br>
+    TEL: 0476-93-1777　営業時間: 8:00〜18:00（日祝休）<br>
+    © 2024 石井電工 All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('nav').classList.toggle('open');
+  });
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

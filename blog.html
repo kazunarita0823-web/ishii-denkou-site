@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ブログ | 有限会社石井電工</title>
+  <meta name="description" content="石井電工のブログ。電気工事に関するお役立ち情報や現場レポートをお届けします。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0d1f35; --blue: #1e40af; --cyan: #0891b2;
+      --amber: #d97706; --gold: #f59e0b; --orange: #ea580c;
+      --text: #1e293b; --muted: #64748b; --bg: #f8fafc; --white: #ffffff;
+      --border: #e2e8f0; --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.10);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); line-height: 1.7; background: var(--white); }
+
+    /* HEADER */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,31,53,0.96); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .header-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      height: 66px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-icon svg { width: 22px; height: 22px; fill: var(--white); }
+    .logo-name {
+      font-size: 20px; font-weight: 900;
+      background: linear-gradient(90deg, #fff 60%, var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .logo-sub { font-size: 11px; color: rgba(255,255,255,0.5); }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13.5px; padding: 6px 12px; border-radius: 6px; transition: all 0.2s; }
+    nav a:hover, nav a.active { color: var(--white); background: rgba(255,255,255,0.08); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), var(--orange)) !important;
+      color: var(--white) !important; font-weight: 700 !important;
+      padding: 8px 18px !important; border-radius: 8px !important;
+    }
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .menu-btn span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 100%);
+      padding: 80px 24px 60px; text-align: center; position: relative; overflow: hidden;
+    }
+    .page-hero::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
+      background: linear-gradient(to bottom right, transparent 49%, var(--bg) 50%);
+    }
+    .page-hero-label { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 16px; }
+    .page-hero h1 { font-size: clamp(28px,5vw,44px); font-weight: 900; color: var(--white); margin-bottom: 12px; }
+    .page-hero p { color: rgba(255,255,255,0.65); }
+
+    /* BLOG LAYOUT */
+    .blog-section { background: var(--bg); padding: 50px 24px 80px; }
+    .blog-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+
+    /* BLOG CARDS */
+    .blog-list { display: flex; flex-direction: column; gap: 28px; }
+    .blog-card {
+      background: var(--white); border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border);
+      display: flex; transition: all 0.3s;
+    }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .blog-card-img {
+      width: 200px; flex-shrink: 0;
+      background: linear-gradient(135deg, #1e3a5f, #0891b2);
+      display: flex; align-items: center; justify-content: center; font-size: 48px;
+    }
+    .blog-card-body { padding: 24px; flex: 1; }
+    .blog-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+    .blog-tag {
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 50px;
+      background: #dbeafe; color: var(--blue);
+    }
+    .blog-tag.orange { background: #fef3c7; color: var(--amber); }
+    .blog-tag.green { background: #d1fae5; color: #059669; }
+    .blog-date { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+    .blog-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; line-height: 1.5; }
+    .blog-title a { color: var(--text); text-decoration: none; }
+    .blog-title a:hover { color: var(--blue); }
+    .blog-excerpt { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+    .blog-more {
+      font-size: 13px; font-weight: 700; color: var(--blue);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+    }
+    .blog-more:hover { gap: 8px; }
+
+    /* SIDEBAR */
+    .sidebar { display: flex; flex-direction: column; gap: 24px; }
+    .sidebar-box { background: var(--white); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+    .sidebar-title { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .category-list { list-style: none; }
+    .category-list li { border-bottom: 1px solid var(--border); }
+    .category-list li:last-child { border-bottom: none; }
+    .category-list a {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; text-decoration: none; color: var(--text); font-size: 14px; transition: color 0.2s;
+    }
+    .category-list a:hover { color: var(--blue); }
+    .category-count { background: var(--bg); padding: 2px 8px; border-radius: 50px; font-size: 12px; color: var(--muted); }
+    .recent-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .recent-list li { padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .recent-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .recent-list a { text-decoration: none; color: var(--text); font-size: 13.5px; line-height: 1.5; transition: color 0.2s; }
+    .recent-list a:hover { color: var(--blue); }
+    .recent-date { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+    .sidebar-cta {
+      background: linear-gradient(135deg, var(--navy), #1e3a5f);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+    }
+    .sidebar-cta p { color: rgba(255,255,255,0.7); font-size: 13px; margin-bottom: 16px; line-height: 1.6; }
+    .sidebar-cta a {
+      display: block; background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: var(--white); font-weight: 700; font-size: 14px;
+      padding: 12px; border-radius: 8px; text-decoration: none; transition: all 0.2s;
+    }
+    .sidebar-cta a:hover { filter: brightness(1.1); }
+
+    /* FOOTER */
+    footer { background: #07111f; padding: 40px 24px; text-align: center; }
+    .footer-logo { color: var(--white); font-weight: 900; font-size: 18px; margin-bottom: 8px; }
+    .footer-info { color: rgba(255,255,255,0.4); font-size: 13px; line-height: 2; }
+
+    @media(max-width: 768px) {
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; position: absolute; top: 66px; left: 0; right: 0; background: var(--navy); padding: 16px; gap: 4px; }
+      .menu-btn { display: block; }
+      .blog-inner { grid-template-columns: 1fr; }
+      .blog-card { flex-direction: column; }
+      .blog-card-img { width: 100%; height: 160px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+      </div>
+      <div>
+        <div class="logo-name">石井電工</div>
+        <div class="logo-sub">成田・富里の電気工事専門店</div>
+      </div>
+    </a>
+    <nav id="nav">
+      <a href="index.html">ホーム</a>
+      <a href="works.html">施工事例</a>
+      <a href="blog.html" class="active">ブログ</a>
+      <a href="contact.html" class="nav-cta">無料見積もり</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-label">✏️ Blog</div>
+  <h1>ブログ</h1>
+  <p>電気工事のお役立ち情報や現場レポートをお届けします</p>
+</div>
+
+<!-- BLOG SECTION -->
+<section class="blog-section">
+  <div class="blog-inner">
+
+    <!-- 記事一覧 -->
+    <div class="blog-list">
+
+      <article class="blog-card">
+        <div class="blog-card-img">💡</div>
+        <div class="blog-card-body">
+          <div class="blog-tags">
+            <span class="blog-tag orange">お役立ち情報</span>
+          </div>
+          <div class="blog-date">2024年8月15日</div>
+          <div class="blog-title"><a href="#">エアコンの電気代を節約する5つのポイント｜電気のプロが教えます</a></div>
+          <div class="blog-excerpt">夏の電気代の多くを占めるエアコン。実は設定温度だけでなく、フィルター掃除・室外機の置き場所・配管の状態なども大きく影響します。今回はプロの視点からすぐできる節電ポイントをご紹介します。</div>
+          <a href="#" class="blog-more">続きを読む →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#1e3a5f,#059669);">🔌</div>
+        <div class="blog-card-body">
+          <div class="blog-tags">
+            <span class="blog-tag green">現場レポート</span>
+          </div>
+          <div class="blog-date">2024年7月28日</div>
+          <div class="blog-title"><a href="#">【施工レポート】成田市のお宅でEV充電コンセントを設置しました</a></div>
+          <div class="blog-excerpt">最近ご依頼が増えているEV（電気自動車）の充電設備設置。今回は成田市の戸建て住宅にV2H対応の200Vコンセントを取り付けた現場をご紹介します。工事時間は約半日で完了しました。</div>
+          <a href="#" class="blog-more">続きを読む →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#7c3aed,#1e3a5f);">📹</div>
+        <div class="blog-card-body">
+          <div class="blog-tags">
+            <span class="blog-tag">お役立ち情報</span>
+          </div>
+          <div class="blog-date">2024年6月10日</div>
+          <div class="blog-title"><a href="#">防犯カメラの選び方｜解像度・録画方式・設置場所の基本を解説</a></div>
+          <div class="blog-excerpt">「防犯カメラを付けたいけど、どれを選べばいいかわからない」というご相談をよくいただきます。今回は種類・解像度・録画方式・設置場所について、わかりやすく解説します。</div>
+          <a href="#" class="blog-more">続きを読む →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#78350f,#d97706);">⚡</div>
+        <div class="blog-card-body">
+          <div class="blog-tags">
+            <span class="blog-tag orange">安全情報</span>
+          </div>
+          <div class="blog-date">2024年5月3日</div>
+          <div class="blog-title"><a href="#">ブレーカーが頻繁に落ちる…それ、電気容量不足のサインかもしれません</a></div>
+          <div class="blog-excerpt">「最近ブレーカーがよく落ちる」というお悩みは、家電の増加・築年数・分電盤の老朽化が主な原因です。放置すると火災のリスクも。早めにご相談ください。</div>
+          <a href="#" class="blog-more">続きを読む →</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- サイドバー -->
+    <aside class="sidebar">
+
+      <div class="sidebar-cta">
+        <p>電気のことで<br>お困りではありませんか？</p>
+        <a href="contact.html">📞 無料見積もりを依頼する</a>
+      </div>
+
+      <div class="sidebar-box">
+        <div class="sidebar-title">カテゴリー</div>
+        <ul class="category-list">
+          <li><a href="#">お役立ち情報 <span class="category-count">12</span></a></li>
+          <li><a href="#">現場レポート <span class="category-count">8</span></a></li>
+          <li><a href="#">安全情報 <span class="category-count">5</span></a></li>
+          <li><a href="#">お知らせ <span class="category-count">3</span></a></li>
+          <li><a href="#">スタッフ日記 <span class="category-count">6</span></a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <div class="sidebar-title">最新記事</div>
+        <ul class="recent-list">
+          <li>
+            <a href="#">エアコンの電気代を節約する5つのポイント</a>
+            <div class="recent-date">2024年8月15日</div>
+          </li>
+          <li>
+            <a href="#">EV充電コンセントを設置しました</a>
+            <div class="recent-date">2024年7月28日</div>
+          </li>
+          <li>
+            <a href="#">防犯カメラの選び方を解説</a>
+            <div class="recent-date">2024年6月10日</div>
+          </li>
+          <li>
+            <a href="#">ブレーカーが落ちる原因とは</a>
+            <div class="recent-date">2024年5月3日</div>
+          </li>
+        </ul>
+      </div>
+
+    </aside>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">⚡ 有限会社石井電工</div>
+  <div class="footer-info">
+    〒286-0201 千葉県富里市七栄651-1<br>
+    TEL: 0476-93-1777　営業時間: 8:00〜18:00（日祝休）<br>
+    © 2024 石井電工 All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('nav').classList.toggle('open');
+  });
+</script>
+</body>
+</html>

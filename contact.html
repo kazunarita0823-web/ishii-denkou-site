@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ・無料見積もり | 有限会社石井電工</title>
+  <meta name="description" content="石井電工へのお問い合わせ・無料見積もりのご依頼はこちら。成田・富里の電気工事専門店。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0d1f35; --blue: #1e40af; --cyan: #0891b2;
+      --amber: #d97706; --gold: #f59e0b; --orange: #ea580c; --green: #059669;
+      --text: #1e293b; --muted: #64748b; --bg: #f8fafc; --white: #ffffff;
+      --border: #e2e8f0; --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.10);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); line-height: 1.7; background: var(--white); }
+
+    /* HEADER */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,31,53,0.96); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .header-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      height: 66px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-icon svg { width: 22px; height: 22px; fill: var(--white); }
+    .logo-name {
+      font-size: 20px; font-weight: 900;
+      background: linear-gradient(90deg, #fff 60%, var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .logo-sub { font-size: 11px; color: rgba(255,255,255,0.5); }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13.5px; padding: 6px 12px; border-radius: 6px; transition: all 0.2s; }
+    nav a:hover, nav a.active { color: var(--white); background: rgba(255,255,255,0.08); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), var(--orange)) !important;
+      color: var(--white) !important; font-weight: 700 !important;
+      padding: 8px 18px !important; border-radius: 8px !important;
+    }
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .menu-btn span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 100%);
+      padding: 80px 24px 60px; text-align: center; position: relative; overflow: hidden;
+    }
+    .page-hero::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
+      background: linear-gradient(to bottom right, transparent 49%, var(--bg) 50%);
+    }
+    .page-hero-label { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 16px; }
+    .page-hero h1 { font-size: clamp(28px,5vw,44px); font-weight: 900; color: var(--white); margin-bottom: 12px; }
+    .page-hero p { color: rgba(255,255,255,0.65); }
+
+    /* CONTACT SECTION */
+    .contact-section { background: var(--bg); padding: 50px 24px 80px; }
+    .contact-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+
+    /* INFO */
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .info-card {
+      background: var(--white); border-radius: var(--radius); padding: 24px;
+      box-shadow: var(--shadow); border: 1px solid var(--border);
+    }
+    .info-icon { font-size: 32px; margin-bottom: 12px; }
+    .info-label { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .info-value { font-size: 22px; font-weight: 900; color: var(--navy); }
+    .info-sub { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .tel-btn {
+      display: block; margin-top: 14px;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: var(--white); font-weight: 700; font-size: 15px;
+      padding: 12px; border-radius: 8px; text-decoration: none; text-align: center;
+      transition: all 0.2s;
+    }
+    .tel-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+    .flow-box { background: var(--white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+    .flow-box h3 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .flow-steps { display: flex; flex-direction: column; gap: 0; }
+    .flow-step { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; position: relative; }
+    .flow-step:not(:last-child)::after {
+      content: ''; position: absolute; left: 15px; top: 44px; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+    .flow-num {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      background: var(--navy); color: var(--white);
+      font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+    }
+    .flow-text strong { font-size: 14px; font-weight: 700; display: block; }
+    .flow-text span { font-size: 12px; color: var(--muted); }
+
+    /* FORM */
+    .contact-form-box {
+      background: var(--white); border-radius: var(--radius); padding: 32px;
+      box-shadow: var(--shadow); border: 1px solid var(--border);
+    }
+    .form-title { font-size: 20px; font-weight: 900; margin-bottom: 6px; }
+    .form-subtitle { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .form-group label .req {
+      display: inline-block; background: var(--orange); color: var(--white);
+      font-size: 10px; padding: 1px 6px; border-radius: 3px; margin-left: 6px; vertical-align: middle;
+    }
+    .form-group label .opt {
+      display: inline-block; background: var(--border); color: var(--muted);
+      font-size: 10px; padding: 1px 6px; border-radius: 3px; margin-left: 6px; vertical-align: middle;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: inherit; font-size: 14px; color: var(--text); background: var(--bg);
+      transition: border-color 0.2s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--blue); background: var(--white);
+    }
+    .form-group textarea { height: 130px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-check { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .form-check input[type="checkbox"] { width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; }
+    .submit-btn {
+      width: 100%; padding: 16px; border: none; border-radius: 10px; cursor: pointer;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: var(--white); font-weight: 900; font-size: 17px;
+      font-family: inherit; transition: all 0.2s;
+    }
+    .submit-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
+    .form-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 12px; }
+
+    /* GUARANTEE */
+    .guarantee-section { padding: 40px 24px; background: var(--white); }
+    .guarantee-inner { max-width: 1000px; margin: 0 auto; }
+    .guarantee-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .guarantee-card {
+      background: var(--bg); border-radius: var(--radius); padding: 24px; text-align: center;
+      border: 1.5px solid var(--border);
+    }
+    .guarantee-icon { font-size: 36px; margin-bottom: 10px; }
+    .guarantee-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--navy); }
+    .guarantee-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* FOOTER */
+    footer { background: #07111f; padding: 40px 24px; text-align: center; }
+    .footer-logo { color: var(--white); font-weight: 900; font-size: 18px; margin-bottom: 8px; }
+    .footer-info { color: rgba(255,255,255,0.4); font-size: 13px; line-height: 2; }
+
+    @media(max-width: 768px) {
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; position: absolute; top: 66px; left: 0; right: 0; background: var(--navy); padding: 16px; gap: 4px; }
+      .menu-btn { display: block; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .guarantee-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+      </div>
+      <div>
+        <div class="logo-name">石井電工</div>
+        <div class="logo-sub">成田・富里の電気工事専門店</div>
+      </div>
+    </a>
+    <nav id="nav">
+      <a href="index.html">ホーム</a>
+      <a href="works.html">施工事例</a>
+      <a href="blog.html">ブログ</a>
+      <a href="contact.html" class="active nav-cta">無料見積もり</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-label">📞 Contact</div>
+  <h1>無料見積もり・お問い合わせ</h1>
+  <p>お気軽にご連絡ください。現地確認・お見積もりは完全無料です。</p>
+</div>
+
+<!-- GUARANTEE -->
+<section class="guarantee-section">
+  <div class="guarantee-inner">
+    <div class="guarantee-grid">
+      <div class="guarantee-card">
+        <div class="guarantee-icon">✅</div>
+        <div class="guarantee-title">見積もり無料</div>
+        <div class="guarantee-desc">現地確認からお見積もりまで、費用は一切かかりません</div>
+      </div>
+      <div class="guarantee-card">
+        <div class="guarantee-icon">⚡</div>
+        <div class="guarantee-title">最短当日対応</div>
+        <div class="guarantee-desc">緊急のトラブルには最短当日にお伺いします</div>
+      </div>
+      <div class="guarantee-card">
+        <div class="guarantee-icon">🔒</div>
+        <div class="guarantee-title">安心の明朗会計</div>
+        <div class="guarantee-desc">作業前に必ず金額を提示。追加費用は一切ありません</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+  <div class="contact-inner">
+
+    <!-- 連絡先情報 -->
+    <div class="contact-info">
+      <div class="info-card">
+        <div class="info-icon">📞</div>
+        <div class="info-label">お電話でのご相談</div>
+        <div class="info-value">0476-93-1777</div>
+        <div class="info-sub">受付時間：8:00〜18:00（日祝除く）</div>
+        <a href="tel:0476931777" class="tel-btn">📞 今すぐ電話する</a>
+      </div>
+
+      <div class="flow-box">
+        <h3>📋 ご依頼の流れ</h3>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-num">1</div>
+            <div class="flow-text">
+              <strong>お問い合わせ</strong>
+              <span>電話またはフォームでご連絡ください</span>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">2</div>
+            <div class="flow-text">
+              <strong>現地確認（無料）</strong>
+              <span>日程を調整してお伺いします</span>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">3</div>
+            <div class="flow-text">
+              <strong>お見積もり（無料）</strong>
+              <span>内容と金額をご説明します</span>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">4</div>
+            <div class="flow-text">
+              <strong>工事・施工</strong>
+              <span>丁寧・スピーディーに対応します</span>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">5</div>
+            <div class="flow-text">
+              <strong>完了・お支払い</strong>
+              <span>ご確認後、現金またはカードで</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- お問い合わせフォーム -->
+    <div class="contact-form-box">
+      <div class="form-title">📝 お問い合わせフォーム</div>
+      <div class="form-subtitle">通常1営業日以内にご返信いたします</div>
+
+      <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label>お名前<span class="req">必須</span></label>
+            <input type="text" placeholder="石井　太郎">
+          </div>
+          <div class="form-group">
+            <label>電話番号<span class="req">必須</span></label>
+            <input type="tel" placeholder="090-0000-0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>メールアドレス<span class="opt">任意</span></label>
+          <input type="email" placeholder="example@gmail.com">
+        </div>
+        <div class="form-group">
+          <label>ご住所（工事場所）<span class="req">必須</span></label>
+          <input type="text" placeholder="成田市・富里市など">
+        </div>
+        <div class="form-group">
+          <label>お問い合わせ内容<span class="req">必須</span></label>
+          <select>
+            <option value="">選択してください</option>
+            <option>エアコン工事</option>
+            <option>コンセント増設・移設</option>
+            <option>防犯カメラ設置</option>
+            <option>照明・LED交換</option>
+            <option>分電盤交換</option>
+            <option>電気トラブル（緊急）</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>詳しい内容・ご要望<span class="opt">任意</span></label>
+          <textarea placeholder="例：リビングのエアコンを新しく取り付けたい。6畳の部屋です。&#10;いつ頃の工事を希望、など何でもお気軽にお書きください。"></textarea>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="privacy">
+          <label for="privacy">プライバシーポリシーに同意する</label>
+        </div>
+        <button type="submit" class="submit-btn">無料見積もりを依頼する →</button>
+        <div class="form-note">※ 送信内容は暗号化されて送信されます</div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">⚡ 有限会社石井電工</div>
+  <div class="footer-info">
+    〒286-0201 千葉県富里市七栄651-1<br>
+    TEL: 0476-93-1777　営業時間: 8:00〜18:00（日祝休）<br>
+    © 2024 石井電工 All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('nav').classList.toggle('open');
+  });
+</script>
+</body>
+</html>
