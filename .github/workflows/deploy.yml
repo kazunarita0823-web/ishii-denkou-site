@@ -1,0 +1,30 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install wrangler
+        run: npm install -g wrangler
+
+      - name: Restore wrangler config
+        run: |
+          mkdir -p ~/.config/.wrangler/config
+          echo "${{ secrets.WRANGLER_CONFIG }}" | base64 -d > ~/.config/.wrangler/config/default.toml
+
+      - name: Deploy to Cloudflare Pages
+        run: wrangler pages deploy . --project-name ishii-denkou --branch main
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          WRANGLER_HOME: /root/.config/.wrangler
